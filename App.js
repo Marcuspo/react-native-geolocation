@@ -3,7 +3,7 @@ import { FlatList } from 'react-native';
 import ForecastCard from './components/ForecastCard';
 
 
-export default class App extends React.Component {
+export default class App extends Component {
 
 	constructor(props){
 		super(props);
@@ -17,13 +17,13 @@ export default class App extends React.Component {
 	}
 
 	componentDidMount(){
-		// Pega a localização do usuário
+		// Get the user's location
 		this.getLocation();
 	}
 
 	getLocation(){
 
-		// Pegando a posição atual do usuário
+		// Get the current position of the user
 		navigator.geolocation.getCurrentPosition(
 			(position) => {
 				this.setState(
@@ -40,10 +40,10 @@ export default class App extends React.Component {
 
 	getWeather(){
 
-		// Construtor para chamar api
-		let url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + this.state.latitude + '&lon=' + this.state.longitude + '&units=metric&appid=http://api.openweathermap.org/data/2.5/forecast?id=524901&APPID={746bab60bb85261fcb6a4f5732916c10}';
+		// Construct the API url to call
+		let url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + this.state.latitude + '&lon=' + this.state.longitude + '&units=metric&&APPID=746bab60bb85261fcb6a4f5732916c10';
 
-		// chamando a url
+		// Call the API, and set the state of the weather forecast
 		fetch(url)
 		.then(response => response.json())
 		.then(data => {

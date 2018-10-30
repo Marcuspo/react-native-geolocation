@@ -9,12 +9,13 @@ export default class ForecastCard extends Component {
 	render() {
 		let time;
 
+		// Create a new date from the passed date time
 		var date = new Date(this.props.detail.dt*1000);
 
-
+		// Hours part from the timestamp
 		var hours = date.getHours();
 		
-
+		// Minutes part from the timestamp
 		var minutes = "0" + date.getMinutes();
 
 		time = hours + ':' + minutes.substr(-2);
@@ -52,6 +53,5 @@ const styles = StyleSheet.create({
 	notes: {
 		fontSize: 18,
 		color:'#fff',
-		textTransform:'capitalize'
 	}
 });

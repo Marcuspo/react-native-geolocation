@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { FlatList } from 'react-native';
 
-constructor(props){
+import ForecastCard from './components/ForecastCard';
+
+constructor(props) {
   super(props);
 
   this.state = {
@@ -45,3 +47,10 @@ getWeather() {
   }
 }
 
+render() {
+  return(
+    <FlatList data={this.state.forecast.list} style={{marginTop20}} keyExtractor={item => item.dt_text} renderItem= {({item}) => <ForecastCard detail={item} location={this.state.forecast.city.name} />} />
+    renderItem={({item}) => <ForecastCard detail={item} location={this.state.forecast.city.name} />}
+
+  );
+}
